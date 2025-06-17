@@ -15,7 +15,7 @@ import os
 
 #Initialize LLM
 llm = ChatOpenAI(
-    model_name="llama2",
+    model_name="llama2:latest",
     base_url="http://localhost:11434/v1",  # or your VPS IP
     api_key="sk-xxxx",  # Can be any dummy key, Ollama doesn't check it
 )
