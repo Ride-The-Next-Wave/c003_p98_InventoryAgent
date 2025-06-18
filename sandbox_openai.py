@@ -8,17 +8,27 @@ import sys
 import os
 
 
+# Choose the model
+model_type = "tinyllama"
+# model_type = "gpt-4"
+
 # # Setting up environment
 # sys.path.insert(0, os.path.abspath('..'))
 # from config import set_environment
 # set_environment()
 
 #Initialize LLM
-llm = ChatOpenAI(
-    model_name="llama2:latest",
-    base_url="http://localhost:11434/v1",  # or your VPS IP
-    api_key="sk-xxxx",  # Can be any dummy key, Ollama doesn't check it
-)
+if model_type == "tinyllama":
+    llm = ChatOpenAI(
+        model_name="tinyllama",
+        base_url="http://localhost:11434/v1",  # or your VPS IP
+        api_key="sk-xxxx",  # Can be any dummy key, Ollama doesn't check it
+    )
+if model_type == "gpt-4":
+    llm = ChatOpenAI(
+        model_name="gpt-4",
+        api_key="sk-YourOpenAIKeyHere"
+    )
 
 def load_data(csv_path, json_path):
     df = pd.read_csv(csv_path)
